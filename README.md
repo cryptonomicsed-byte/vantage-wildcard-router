@@ -9,7 +9,9 @@ when no endpoint is registered.
 ## Status: internal service deployed, NOT yet wired to public 443
 
 The router itself is real, tested, and running (`systemctl status
-vantage-wildcard-router` on hostinger-vps, listening on `127.0.0.1:8090`).
+vantage-wildcard-router` on hostinger-vps, listening on `127.0.0.1:8095` —
+8090 was already bound by an unrelated existing service, caught during
+deployment).
 
 **What's NOT done, and why:** getting real HTTPS working for arbitrary
 `*.sslip.io` subdomains publicly requires either:
