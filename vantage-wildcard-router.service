@@ -1,0 +1,17 @@
+[Unit]
+Description=Vantage wildcard-subdomain dynamic router (*.sslip.io)
+After=network.target vantage.service
+Wants=vantage.service
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/ares/vantage-wildcard-router
+Environment="VANTAGE_INTERNAL_URL=http://127.0.0.1:8001"
+Environment="VANTAGE_PUBLIC_URL=https://omokoda.duckdns.org"
+ExecStart=/opt/ares/vantage-wildcard-router/venv/bin/uvicorn router:app --host 127.0.0.1 --port 8090
+Restart=on-failure
+RestartSec=3
+User=root
+
+[Install]
+WantedBy=multi-user.target
